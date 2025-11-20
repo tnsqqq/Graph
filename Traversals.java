@@ -78,6 +78,23 @@ public class Traversals {
     }
   }
 
+  public static boolean hasPath(ArrayList<Edge>[] graph, int src, int dest, boolean[] visited) { // O(V+E)
+    if (src == dest) {
+      return true;
+    }
+
+    visited[src] = true;
+
+    for (int i = 0; i < graph[src].size(); i++) {
+      Edge e = graph[src].get(i);
+      // e.dest = neighbour
+      if (!visited[e.dest] && hasPath(graph, e.dest, dest, visited)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   public static void main(String[] args) {
     int V = 7;
     ArrayList<Edge>[] graph = new ArrayList[V];
@@ -88,6 +105,7 @@ public class Traversals {
     createGraph(graph);
 
     // bfs(graph);
-    dfs(graph, 0, new boolean[V]);
+    // dfs(graph, 0, new boolean[V]);
+    System.out.println(hasPath(graph, 0, 5, new boolean[V]));
   }
 }
