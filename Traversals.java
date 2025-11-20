@@ -57,6 +57,27 @@ public class Traversals {
     }
   }
 
+  // dfs-
+  // recursion
+  // 1. visit curr node
+  // 2. visit all neighbors
+  // for(int i=0; to k){
+  // if(!visit[arr]){
+  // dfs(neighbor i);}}
+
+  public static void dfs(ArrayList<Edge>[] graph, int curr, boolean[] visited) { // O(V+E)
+    // visit
+    System.out.print(curr + " ");
+    visited[curr] = true;
+
+    for (int i = 0; i < graph[curr].size(); i++) {
+      Edge e = graph[curr].get(i);
+      if (!visited[e.dest]) {
+        dfs(graph, e.dest, visited);
+      }
+    }
+  }
+
   public static void main(String[] args) {
     int V = 7;
     ArrayList<Edge>[] graph = new ArrayList[V];
@@ -66,6 +87,7 @@ public class Traversals {
 
     createGraph(graph);
 
-    bfs(graph);
+    // bfs(graph);
+    dfs(graph, 0, new boolean[V]);
   }
 }
