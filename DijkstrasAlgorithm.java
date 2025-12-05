@@ -1,4 +1,4 @@
-// Shortest paths from the source to all vertices (weighted graph)
+// Shortest paths from the source to all vertices (weighted graph) - Greedy
 
 import java.util.*;
 
@@ -92,8 +92,7 @@ public class DijkstrasAlgorithm {
     int src = 0;
     createGraph(graph);
     dijkstra(graph, src);
-
   }
 }
 
-// TC = V + Elogv
+// TC = O(V + Elogv)
